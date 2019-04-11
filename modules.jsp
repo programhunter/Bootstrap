@@ -39,19 +39,18 @@
 
       <div class="row py-3">
         <div class="col-lg-12">
+          <form action="">
           <div class="form">
             <div class="form-row">
               <div class="col-2">
-                <a href="" class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Module</a>
+                <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Module</button>
               </div>
-              <div class="col-6">
+              <div class="col-10">
                 <input type="text" class="form-control" placeholder="Module Name">
-              </div>
-              <div class="col-4">
-                <input type="email" class="form-control" placeholder="Stream ID">
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
 
@@ -59,8 +58,8 @@
         <thead>
           <tr>
             <th scope="col" style="width: 10%;">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Stream ID</th>
+            <th scope="col">Module Name</th>
+            <th scope="col">Stream Name</th>
           </tr>
         </thead>
         <tbody>

@@ -39,16 +39,18 @@
 
       <div class="row py-3">
         <div class="col-lg-12">
+          <form action="">
           <div class="form">
             <div class="form-row">
               <div class="col-2">
-                <a href="" class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Stream</a>
+                <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Stream</button>
               </div>
               <div class="col-10">
                 <input type="text" class="form-control" placeholder="Stream Name">
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
 

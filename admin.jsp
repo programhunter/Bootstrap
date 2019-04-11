@@ -39,10 +39,11 @@
 
       <div class="row py-3">
         <div class="col-lg-12">
+          <form action="">
           <div class="form">
             <div class="form-row">
               <div class="col-2">
-                <a href="" class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert User</a>
+                <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert User</button>
               </div>
               <div class="col-7">
                 <input type="email" class="form-control" placeholder="Email">
@@ -61,6 +62,7 @@
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
 

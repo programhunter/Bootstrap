@@ -39,19 +39,21 @@
 
       <div class="row py-3">
         <div class="col-lg-12">
+          <form action="">
           <div class="form">
             <div class="form-row">
               <div class="col-2">
-                <a href="" class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Course</a>
+                <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Course</button>
               </div>
-              <div class="col-6">
+              <div class="col-5">
                 <input type="text" class="form-control" placeholder="Course Name">
               </div>
-              <div class="col-4">
-                <input type="text" class="form-control" placeholder="Module ID">
+              <div class="col-5">
+                <input type="text" class="form-control" placeholder="Module Name">
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
 
@@ -59,25 +61,23 @@
         <thead>
           <tr>
             <th scope="col" style="width: 10%;">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Module ID</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Module Name</th>
           </tr>
         </thead>
         <tbody>
             <tr>
               <th scope="row">1</th>
               <td><a href="manage-course.jsp?id=Big+Name&x=FFD-332">Big Name</a></td>
-              <td>FFD-332</td>
+              
             </tr>
           <a href=""><tr>
             <th scope="row">2</th>
             <td><a href="manage-course.jsp?id=Another+Big+Name&x=PSC-328">Another Big Name</a></td>
-            <td>PSC-328</td>
           </tr></a>
           <tr>
             <th scope="row">3</th>
             <td><a href="manage-course.jsp?id=Easy+Clap&x=PDM-551">Easy Clap</a></td>
-            <td>PDM-551</td>
           </tr>
         </tbody>
       </table>
