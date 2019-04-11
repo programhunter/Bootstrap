@@ -64,7 +64,7 @@
               </div>
             </div>
             <div class="row justify-content-center">
-              <a href="" class="btn btn-small btn-primary mt-3 rounded-0 px-3"><i class="fas fa-file-alt pr-2"></i> Upload</a>
+              <button class="btn btn-small btn-primary mt-3 rounded-0 px-3"><i class="fas fa-file-alt pr-2"></i> Upload</button>
             </div>
           </form>
         </div>

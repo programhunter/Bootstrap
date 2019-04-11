@@ -43,7 +43,7 @@
           <div class="form">
             <div class="form-row">
               <div class="col-lg-2">
-                <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert User</button>
+                <button class="btn btn-small btn-success no-border" type="submit"><small><i class="fas fa-plus pr-2"></i>Insert User</small></button>
               </div>
               <div class="col-lg-7">
                 <input type="email" class="form-control" placeholder="Email">
