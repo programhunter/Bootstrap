@@ -42,13 +42,13 @@
           <form action="">
           <div class="form">
             <div class="form-row">
-              <div class="col-2">
+              <div class="col-lg-2">
                 <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert User</button>
               </div>
-              <div class="col-7">
+              <div class="col-lg-7">
                 <input type="email" class="form-control" placeholder="Email">
               </div>
-              <div class="col-3">
+              <div class="col-lg-3">
                 <div class="form-group pt-lg-2 pl-lg-2">
                   <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="customRadio" name="example" value="customEx">

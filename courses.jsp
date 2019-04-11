@@ -42,13 +42,13 @@
           <form action="">
           <div class="form">
             <div class="form-row">
-              <div class="col-2">
+              <div class="col-lg-2">
                 <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Course</button>
               </div>
-              <div class="col-5">
+              <div class="col-lg-5">
                 <input type="text" class="form-control" placeholder="Course Name">
               </div>
-              <div class="col-5">
+              <div class="col-lg-5">
                 <input type="text" class="form-control" placeholder="Module Name">
               </div>
             </div>
@@ -69,15 +69,17 @@
             <tr>
               <th scope="row">1</th>
               <td><a href="manage-course.jsp?id=Big+Name&x=FFD-332">Big Name</a></td>
-              
+              <td>sample-123</td>
             </tr>
-          <a href=""><tr>
+          <tr>
             <th scope="row">2</th>
             <td><a href="manage-course.jsp?id=Another+Big+Name&x=PSC-328">Another Big Name</a></td>
-          </tr></a>
+            <td>sample-123</td>
+          </tr>
           <tr>
             <th scope="row">3</th>
             <td><a href="manage-course.jsp?id=Easy+Clap&x=PDM-551">Easy Clap</a></td>
+            <td>sample-123</td>
           </tr>
         </tbody>
       </table>

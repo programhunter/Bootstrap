@@ -42,10 +42,10 @@
           <form action="">
           <div class="form">
             <div class="form-row">
-              <div class="col-2">
+              <div class="col-lg-2">
                 <button class="btn btn-small btn-success no-border" type="submit"><i class="fas fa-plus pr-2"></i>Insert Module</button>
               </div>
-              <div class="col-10">
+              <div class="col-lg-10">
                 <input type="text" class="form-control" placeholder="Module Name">
               </div>
             </div>

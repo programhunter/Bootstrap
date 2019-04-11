@@ -39,8 +39,15 @@
     <div class="container pb-5">
       <div class="row justify-content-center">
         <div class="card col-md-6 col-sm-12 col-lg-5 mt-4 py-3 shadow">
-          <div class="card-header text-muted noto">
+          <div class="card-header text-muted noto bg-white">
             <i class="fas fa-book-open pr-2"></i> Manage Course
+            <span style="float: right;">
+              <form>
+                <a href="" class="btn btn-sm btn-danger">
+                  <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
+                </a>
+              </form>
+            </span>
           </div>
           <form>
             <div class="form-group row mt-3">
@@ -60,14 +67,9 @@
             <div class="row justify-content-center mt-1">
               <div class="row pt-3">
                 <div class="col-6">
-                    <a href="" class="btn btn-sm btn-danger">
-                      <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="" class="btn btn-sm ghost">
+                    <button class="btn btn-sm ghost" type="submit">
                       <span style="white-space: nowrap;"><i class="fas fa-user-edit"></i> Update </span>
-                    </a>
+                    </button>
                 </div>
               </div>
             </div>
