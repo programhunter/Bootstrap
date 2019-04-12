@@ -2,7 +2,7 @@
 
 <body class="bg-light">
 
-<jsp:include page="nav.jsp"/>
+  <jsp:include page="nav.jsp"/>
   <div class="container-fluid">
     <div class="container mt-2 pt-4 pb-3">
       <nav aria-label="breadcrumb">
@@ -40,20 +40,24 @@
       <div class="row py-3">
         <div class="col-lg-12">
           <form action="">
-          <div class="form">
-            <div class="form-row">
-              <div class="col-lg-2">
-                <button class="btn btn-small btn-success no-border" type="submit"><small><i class="fas fa-plus pr-2"></i>Insert Course</small></button>
-              </div>
-              <div class="col-lg-5">
-                <input type="text" class="form-control" placeholder="Course Name">
-              </div>
-              <div class="col-lg-5">
-                <input type="text" class="form-control" placeholder="Module Name">
+            <div class="form">
+              <div class="form-row">
+                <div class="col-lg-2">
+                  <button class="btn btn-small btn-success no-border" type="submit"><small><i class="fas fa-plus pr-2"></i>Insert Course</small></button>
+                </div>
+                <div class="col-lg-5">
+                  <input type="text" class="form-control" placeholder="Course Name">
+                </div>
+                <div class="form-group col-md-5">
+                  <select id="inputState" class="form-control text-muted" required>
+                    <option selected="">Module Name</option>
+                    <option>Fat Data</option>
+                    <option>Another Item</option>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
         </div>
       </div>
 
@@ -66,11 +70,11 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td><a href="manage-course.jsp?id=Big+Name&x=FFD-332">Big Name</a></td>
-              <td>sample-123</td>
-            </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td><a href="manage-course.jsp?id=Big+Name&x=FFD-332">Big Name</a></td>
+            <td>sample-123</td>
+          </tr>
           <tr>
             <th scope="row">2</th>
             <td><a href="manage-course.jsp?id=Another+Big+Name&x=PSC-328">Another Big Name</a></td>
