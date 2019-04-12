@@ -17,11 +17,12 @@
         </li>
       </ul>
       <ul class="navbar-nav d-md-none d-lg-block">
-        <div class="btn-group mr-3">
+        <div class="btn-group dropleft">
           <button style="color: #fff;" class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <small> <i class="fas fa-user pr-1"></i> jared@syntelinc.com</small>
+            <i class="fas fa-user pr-1"></i>
           </button>
           <div class="dropdown-menu">
+            <div class="dropdown-item"><small>Logged in as: <br><b>jared@syntelinc.com</b></small></div>
             <a class="dropdown-item" href="#"><small><i class="fas fa-lock pr-2"></i>Change Password</small></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><small>Logout</small></a>

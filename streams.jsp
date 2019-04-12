@@ -1,3 +1,60 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.*" %>
+
+<%
+  
+  
+  //initialize driver class
+  try {    
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+  } catch (Exception e) {
+    out.println("Fail to initialize Oracle JDBC driver: " + e.toString() + "<P>");
+  }
+  
+  String dbUser = "Student_Performance";
+  String dbPasswd = "Student_Performance";
+  String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
+
+  //connect
+  Connection conn = null;
+  try {
+    conn = DriverManager.getConnection(dbURL,dbUser,dbPasswd);
+    //out.println(" Connection status: " + conn + "<P>");
+  } catch(Exception e) {
+    out.println("Connection failed: " + e.toString() + "<P>");      
+  }
+
+  String sql;
+  int numRowsAffected;
+  Statement stmt = conn.createStatement();
+  ResultSet rs;
+  String stream_name = request.getParameter("streamName");
+  
+  sql = "select stream_name from stream";
+  rs = stmt.executeQuery(sql);
+  
+  ArrayList usersList = new ArrayList();
+  request.setAttribute("usersList", usersList);
+  
+  while (rs.next()) {
+        usersList.add(rs.getString("stream_name"));
+        //out.println("User Id = " + rs.getString("user_id") + "<BR>"); 
+        } // End while 
+
+
+  rs.close();
+  stmt.close();
+
+  //commit
+  conn.commit();
+  
+  //disconnect
+  conn.close();
+  
+%>  
+
+
 <jsp:include page="head-tag.jsp"/>
 
 <body class="bg-light">
@@ -39,14 +96,14 @@
 
       <div class="row py-3">
         <div class="col-lg-12">
-          <form action="">
+          <form action="createStream.jsp">
           <div class="form">
             <div class="form-row">
               <div class="col-lg-2">
                 <button class="btn btn-small btn-success no-border" type="submit"><small><i class="fas fa-plus pr-2"></i>Insert Stream</small></button>
               </div>
               <div class="col-lg-10">
-                <input type="text" class="form-control" placeholder="Stream Name">
+                <input type="text" class="form-control" id ="streamName" name="streamName" placeholder="Stream Name" required>
               </div>
             </div>
           </div>
@@ -62,18 +119,16 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td><a href="manage-stream.jsp?id=Stream+Name+1">Stream Name 1</a></td>
+        <c:set var ="count" value="1"/>
+        <c:forEach items ="${usersList}" var="user">
+            <tr value ="${user}">
+                <th scope = "row"> ${count}</th>
+                <td>
+                    <a href="manage-stream.jsp?id=${user}">${user}</a>
+                </td>
             </tr>
-          <a href=""><tr>
-            <th scope="row">2</th>
-            <td><a href="manage-stream.jsp?id=Another+Stream+2">Another Stream 2</a></td>
-          </tr></a>
-          <tr>
-            <th scope="row">3</th>
-            <td><a href="manage-stream.jsp?id=Big+Stream+3">Big Stream 3</a></td>
-          </tr>
+        <c:set var="count" value = "${count+1}"/>    
+        </c:forEach>
         </tbody>
       </table>
     </div>

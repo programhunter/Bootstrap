@@ -1,3 +1,45 @@
+<jsp:include page="head-tag.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.*" %>
+
+
+<%
+try {    
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+  } catch (Exception e) {
+    out.println("Fail to initialize Oracle JDBC driver: " + e.toString() + "<P>");
+  }
+  
+  String dbUser = "Student_Performance";
+  String dbPasswd = "Student_Performance";
+  String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
+  //connect
+  Connection conn = null;
+  try {
+    conn = DriverManager.getConnection(dbURL,dbUser,dbPasswd);
+    out.println(" Connection status: " + conn + "<P>");
+  } catch(Exception e) {
+    out.println("Connection failed: " + e.toString() + "<P>");      
+  }
+  String sql;
+  int numRowsAffected;
+  Statement stmt = conn.createStatement();
+  ResultSet rs;    
+// select
+  sql = "select stream_Name from stream";
+  rs = stmt.executeQuery(sql);
+    
+ ArrayList streamName = new ArrayList();
+  request.setAttribute("streamName", streamName);
+  
+  while (rs.next()) {
+        streamName.add(rs.getString("stream_Name"));
+        //out.println("User Id = " + rs.getString("user_id") + "<BR>"); 
+        } // End while 
+  out.println(streamName);
+%>
+
 
 
 <jsp:include page="head-tag.jsp"/>
@@ -45,25 +87,42 @@
           <div class="card-header text-muted noto bg-white">
             <i class="fas fa-layer-group pr-2"></i> Manage Module 
             <span style="float: right;">
-              <form>
-                <a href="" class="btn btn-sm btn-danger">
+              <form action="deleteModule.jsp">
+                  <input type="hidden" name='moduleId' id ="moduleId" value='${param.id}' />
+                  <button class="btn btn-sm btn-danger" type ="submit">
+                <!--a href="" class="btn btn-sm btn-danger"-->
                   <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
-                </a>
+                <!--/a-->
+                  </button>
               </form>
             </span>
           </div>
-          <form>
+          <form action="updateModule.jsp">
+              <input type="hidden" name='moduleId' id ="moduleId" value='${param.id}' />
             <div class="form-group row mt-3">
               <label for="new_module" class="col-sm-3 col-form-label">Module</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="new_module" placeholder="${param.id}">
+                <input type="text" class="form-control" id="modName" name ="modName" placeholder="" value="${param.okay}" required>
+              </div>
+            </div>
+              
+              <div class="form-group row mt-3">
+              <label for="new_module" class="col-sm-3 col-form-label">Category</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="cat" name ="cat" placeholder="" value="${param.name}" required>
               </div>
             </div>
 
             <div class="form-group row mt-3">
-              <label for="new_stream_id" class="col-sm-3 col-form-label">Stream ID</label>
+              <label for="new_stream_id" class="col-sm-3 col-form-label">Stream Name</label>
               <div class="col-sm-9">
-                <input type="email" class="form-control" id="new_stream_id" placeholder="${param.x}">
+                  <select id="inputState" class="form-control" required="" name ="streamName" id ="streamName">
+                      <c:forEach items="${streamName}" var="stream">
+                          <option value="${stream}">
+                              ${stream}
+                          </option>
+                      </c:forEach>
+                  </select>
               </div>
             </div>
 
@@ -95,3 +154,5 @@
 
 </body>
 </html>
+
+

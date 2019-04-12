@@ -43,18 +43,20 @@
           <div class="card-header text-muted noto bg-white">
             <i class="fas fa-water pr-2"></i> Manage Stream 
             <span style="float: right;">
-              <form>
+              <form action = "deleteStream.jsp">
+                <input type='hidden' name='stream_id' id="stream_id" value='${param.id}' />
                 <button class="btn btn-sm btn-danger" type="submit">
                   <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
                 </button>
               </form>
             </span>
           </div>
-          <form>
+          <form action ="update-stream.jsp">
             <div class="form-group row mt-3">
               <label for="new_stream_name" class="col-sm-3 col-form-label">Stream</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="new_stream_name" placeholder="${param.id}">
+                  <input type ="hidden" name="stream_name" id="stream_name" value='${param.id}'/>
+                <input type="text" class="form-control" id="new_stream_name" name ="new_stream_name" value="${param.id}" required>
               </div>
             </div>
 

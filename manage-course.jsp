@@ -1,3 +1,100 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.*" %>
+
+<%
+  
+  //initialize driver class
+  try {    
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+  } catch (Exception e) {
+    out.println("Fail to initialize Oracle JDBC driver: " + e.toString() + "<P>");
+  }
+  
+  String dbUser = "Student_Performance";
+  String dbPasswd = "Student_Performance";
+  String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
+  //connect
+  Connection conn = null;
+  try {
+    conn = DriverManager.getConnection(dbURL,dbUser,dbPasswd);
+   
+  } catch(Exception e) {
+    out.println("Connection failed: " + e.toString() + "<P>");      
+  }
+  String sql;
+  int numRowsAffected;
+  Statement stmt = conn.createStatement();
+  ResultSet rs;
+  
+  // insert
+  /*try {
+    
+    sql = "insert into users values ('chris@syntelinc.com', 'password', 'N')";
+    numRowsAffected = stmt.executeUpdate(sql);
+    out.println(numRowsAffected + " user(s) inserted. <BR>");
+  
+  } catch (SQLException e) {
+    
+    out.println("Error encountered during row insertion for employee: " + e.toString() + "<BR>");
+  
+  }*/
+  
+  
+  // select
+  sql = "select c.course_name as course, m.module_name as module from courses c, modules m where c.module_id = m.module_id ";
+  rs = stmt.executeQuery(sql);
+  
+  ArrayList courseList = new ArrayList();
+  request.setAttribute("courseList", courseList);
+  
+  ArrayList modList = new ArrayList();
+  request.setAttribute("modList", modList);
+  
+ 
+  
+  while (rs.next()) {
+        courseList.add(rs.getString("course"));
+        modList.add(rs.getString("module"));
+        //out.println("User Id = " + rs.getString("user_id") + "<BR>"); 
+        } // End while 
+  
+  
+  sql = "select module_name from modules";
+  rs = stmt.executeQuery(sql);
+  
+  ArrayList fullmodList = new ArrayList();
+  request.setAttribute("fullmodList", fullmodList);
+  
+ 
+  
+  while (rs.next()) {
+        fullmodList.add(rs.getString("module_name"));
+        //out.println("User Id = " + rs.getString("user_id") + "<BR>"); 
+        } // End while 
+   //out.println(courseList.get(0));
+ 
+  // delete
+  /* try {
+    sql = "delete from users";
+    numRowsAffected = stmt.executeUpdate(sql);
+    out.println(numRowsAffected + " user(s) deleted. <BR>");
+  } catch (SQLException e) {
+    out.println("Error encountered during deletion of employee: " + e.toString() + "<BR>");
+  
+  }  
+  out.println("<P>"); */
+  
+  rs.close();
+  stmt.close();
+  //commit
+  conn.commit();
+  
+  //disconnect
+  conn.close();
+  
+%>  
+
 <jsp:include page="head-tag.jsp"/>
 
 <body class="bg-light">
@@ -42,27 +139,38 @@
           <div class="card-header text-muted noto bg-white">
             <i class="fas fa-book-open pr-2"></i> Manage Course
             <span style="float: right;">
-              <form>
-                <a href="" class="btn btn-sm btn-danger">
+              <form action = "deleteCourses.jsp">
+                  <input type='hidden' name='course_id' id="course_id" value='${param.id}' />
+                  <button class="btn btn-sm btn-danger" type="submit">
+                <!--a href="" class="btn btn-sm btn-danger"-->
                   <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
-                </a>
+                  </button>
+                <!--/a-->
               </form>
             </span>
           </div>
-          <form>
+          <form action="update-courses.jsp">
             <div class="form-group row mt-3">
               <label for="new_course_name" class="col-sm-3 col-form-label">Course</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="new_course_name" placeholder="${param.id}">
+                  <input type="hidden" name="course_name" id="course_name" value='${param.id}' />
+                <input type="text" class="form-control" id="new_course_name" name="new_course_name" value="${param.id}" required>
               </div>
             </div>
 
             <div class="form-group row mt-3">
-              <label for="new_id" class="col-sm-3 col-form-label">ID</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="new_id" placeholder="${param.x}">
-              </div>
+              <label for="new_id" class="col-sm-3 col-form-label">Module</label>
+              <div class="form-group col-md-5">
+                  <select class="custom-select" name= "modulename" id="modulename">
+                    <c:forEach items="${fullmodList}" var="modder">
+                        <option value="${modder}">
+                            ${modder}
+                        </option>
+                    </c:forEach>
+                    </select>
+                </div>
             </div>
+              
 
             <div class="row justify-content-center mt-1">
               <div class="row pt-3">

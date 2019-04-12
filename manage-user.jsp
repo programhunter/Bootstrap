@@ -42,18 +42,24 @@
           <div class="card-header text-muted noto bg-white">
             <i class="fas fa-user pr-2"></i> Edit User
             <span style="float: right;">
-              <form>
-                <a href="" class="btn btn-sm btn-danger">
+              <form action="delete-user.jsp">
+                  <div class="col-sm-9">
+                <input type="hidden" class="form-control" id="inputEmail4" name="oldusername" value="${param.id}">
+                </div>
+                <button type="submit" class="btn btn-sm btn-danger">
                   <span style="white-space: nowrap;"><i class="fas fa-user-minus"></i> Delete </span>
-                </a>
+                </button>
               </form>
             </span>
           </div>
-          <form>
+          <form action="update-user.jsp">
             <div class="form-group row mt-3">
               <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
               <div class="col-sm-9">
-                <input type="email" class="form-control" id="inputEmail3" placeholder='${param.id}'>
+                <input type="email" class="form-control" id="inputEmail3" name="newusername" value="${param.id}" required>
+              </div>
+              <div class="col-sm-9">
+                <input type="hidden" class="form-control" id="inputEmail4" name="oldusername" value="${param.id}" required>
               </div>
             </div>
 
@@ -61,12 +67,12 @@
               <label for="inputEmail3" class="col-sm-4 col-form-label">User Level</label>
               <div class="col-sm-8 pt-2">
                   <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" class="custom-control-input" id="customRadio" name="example" value="customEx">
-                      <label class="custom-control-label noto text-muted" for="customRadio"><small>Onsite</small></label>
+                      <input type="radio" class="custom-control-input" id="customRadio" name="example" value="N" checked>
+                      <label class="custom-control-label noto text-muted" for="customRadio"><small>Instructor</small></label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" class="custom-control-input" id="customRadio2" name="example" value="customEx">
-                      <label class="custom-control-label noto text-muted" for="customRadio2"><small>Offsite</small></label>
+                      <input type="radio" class="custom-control-input" id="customRadio2" name="example" value="Y">
+                      <label class="custom-control-label noto text-muted" for="customRadio2"><small>Admin</small></label>
                     </div> 
               </div>
             </div>
